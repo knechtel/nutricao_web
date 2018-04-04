@@ -10,25 +10,30 @@
 <h:head>
 </h:head>
 <h:body>
-	<h1>Portal Nutris</h1>
-
+	<h1>Paciente Cadastrado com sucesso!</h1>
 	<h:form>
-	
-	<table>
-  <tr>
-    <td>Email</td>
-    <th> <h:inputText value="#{usuarioBean.email}" /></th> 
-  </tr>
-  <tr>
-    <td>Senha</td>
-    <td><h:inputSecret value="#{usuarioBean.password}" /></td> 
-  </tr>
 
-</table>
-	<h:commandButton action="#{usuarioBean.doLogin()}" value="Enviar" />
-	<br>
-	 <h:commandLink  action="#{usuarioBean.doCadUsuario()}" value="Criar Usuário" /></br>
-	</h:form>	
+
+		<table>
+
+			<tr>
+
+				<td><h:commandLink action="#{pacienteBean.goPrincipal()}"
+						value="Home" /></td>
+			</tr>
+
+			<tr>
+
+				<td><h:commandLink action="#{usuarioBean.doAgenda()}"
+						value="Cadastro de Paciente" /></td>
+			</tr>
+
+
+
+
+		</table>
+
+	</h:form>
 
 </h:body>
 </html>

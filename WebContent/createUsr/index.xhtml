@@ -10,24 +10,23 @@
 <h:head>
 </h:head>
 <h:body>
-	<h1>Portal Nutris</h1>
+	<h1>Portal Nutris - Criar Usuário</h1>
 
 	<h:form>
 	
 	<table>
   <tr>
     <td>Email</td>
-    <th> <h:inputText value="#{usuarioBean.email}" /></th> 
+    <th> <h:inputText value="#{createUsuarioBean.usuario.nome}" /></th> 
   </tr>
   <tr>
     <td>Senha</td>
-    <td><h:inputSecret value="#{usuarioBean.password}" /></td> 
-  </tr>
-
+    <td><h:inputSecret value="#{createUsuarioBean.usuario.password}" /></td> 
+</tr>
 </table>
-	<h:commandButton action="#{usuarioBean.doLogin()}" value="Enviar" />
-	<br>
-	 <h:commandLink  action="#{usuarioBean.doCadUsuario()}" value="Criar Usuário" /></br>
+	<h:commandButton action="#{createUsuarioBean.createUsuario()}" value="Enviar" />
+	 		<br>
+	<a href="http://localhost:8080/nutricao-WEB/index.jsf">login</a></br>
 	</h:form>	
 
 </h:body>

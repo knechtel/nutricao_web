@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Portal Nutris</h1>
+<h:form>
+
+ Bem vindo ! 
+ 
+ <table>
+ <tr>
+ <td>
+<h:commandLink action="#{usuarioBean.doAgenda()}" value="Cadastro de Paciente" />
+</td></tr>
+
+
+</table>
+
+<br><a href="http://localhost:8080/nutricao_web/faces/portal/cadPrSaude/cadPrSaude.xhtml">Cadastro profissional de Saude</a></br>
+
+<br><a href="http://localhost:8080/nutricao_web/faces/portal/viewPaciente.xhtml">Pacientes cadastrados</a></br>
+<br><a href="http://localhost:8080/nutricao_web/faces/portal/viewPrSaude.xhtml">Profissionais de saude cadastrados</a></br>
+
+</h:form>
+
+</h:body>
+</html>

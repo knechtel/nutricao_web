@@ -3,6 +3,7 @@
 	<name>nutricao_web</name>
 	<comment></comment>
 	<projects>
+		<project>nutricao-EJB</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
