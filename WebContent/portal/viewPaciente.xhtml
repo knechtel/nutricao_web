@@ -38,6 +38,10 @@
     <p:column headerText="">
      <h:commandLink value="Delete" action="#{pacienteBean.deleteAction(paciente)}" />
     </p:column>
+    
+       <p:column headerText="">
+     <h:commandLink value="Exames" action="#{pacienteBean.examesAction(paciente)}" />
+    </p:column>
 </p:dataTable>
 	 	<td><h:commandLink action="#{pacienteBean.doHome()}"
 						value="Home" /></td>

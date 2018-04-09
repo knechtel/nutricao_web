@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+	<h1>Cadastro de Exames</h1>
+	<h:form>
+
+
+		<table>
+			<tr>
+				<td>Nome do paciente</td>
+				<td><p:selectOneMenu value="#{exameBean.idPaciente}"
+						id="paciente">
+						<f:selectItems value="#{exameBean.listPaciente}" var="paciente"
+							itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
+					</p:selectOneMenu></td>
+			</tr>
+			
+				<tr>
+				<td>Nome do Exame</td>
+				<td><p:inputText value="#{exameBean.exame.nome}"/></td>
+			</tr>
+			
+
+			<tr>
+				<td>Resultado</td>
+
+				<td><p:inputTextarea value="#{exameBean.exame.resultado}" /></td>
+
+			</tr>
+
+			<tr>
+				<td>Data da realização</td>
+				<td><p:calendar id="button"
+						value="#{exameBean.exame.dataRealizacao}" showOn="button" /></td>
+			</tr>
+
+		</table>
+		<h:commandButton action="#{exameBean.persist()}" value="Enviar" />
+
+	</h:form>
+
+</h:body>
+</html>
