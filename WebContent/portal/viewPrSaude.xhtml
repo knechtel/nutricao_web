@@ -28,7 +28,7 @@
     </p:column>
  
     <p:column headerText="">
-        <h:commandLink value="delete"  />
+        <h:commandLink value="delete" action="#{profissiobalSaudeBean.deleteAction(profissional)}"  />
     </p:column>
 </p:dataTable>
 	 	<td><h:commandLink action="#{pacienteBean.doHome()}"

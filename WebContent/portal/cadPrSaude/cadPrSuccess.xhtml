@@ -10,7 +10,7 @@
 <h:head>
 </h:head>
 <h:body>
-	<h1>Usuário cadastrado com sucesso!</h1>
+	<h1>Profissional cadastrado com sucesso!</h1>
 	<h:form>
 
 
@@ -18,15 +18,18 @@
 
 			<tr>
 
-				<td><br> <a
-						href="http://localhost:8080/nutricao-WEB/index.jsf">login</a></br></td>
+				<td>
+				<h:commandLink action="#{usuarioBean.doIndex()}" value="Home" />
+				</td>
 			</tr>
 
 			<tr>
 
-				<td><br><a
-						href="http://localhost:8080/nutricao-WEB/portal/cadPrSaude/cadPrSaude.jsf">Cadastro
-							profissional de Saude</a> </br></td>
+				<td>
+					<a
+			href="http://localhost:8080/nutricao_web/faces/portal/cadPrSaude/cadPrSaude.xhtml">Cadastro
+				profissional de Saude</a>
+				</td>
 			</tr>
 
 
