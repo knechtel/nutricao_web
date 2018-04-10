@@ -11,4 +11,15 @@
     <url-pattern>/faces/*</url-pattern>
   </servlet-mapping>
   
+  <!--  login filter -->
+  <filter>
+      <filter-name>LoginFilter</filter-name>
+      <filter-class>br.com.nutricao.filter.LoginFilter</filter-class>    
+  </filter>
+  <filter-mapping>
+      <filter-name>LoginFilter</filter-name>
+      <url-pattern>/faces/portal/*</url-pattern>
+  </filter-mapping>
+  
+  
 </web-app>
