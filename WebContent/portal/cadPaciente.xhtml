@@ -6,38 +6,38 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
-	<h1>Cadastro de  Paciente</h1>
-<h:form>
-	
-	
-	<table>
-  <tr>
-    <td>Nome</td>
-    <th> <h:inputText value="#{pacienteBean.paciente.nome}" /></th> 
-  </tr>
-  <tr>
-    <td>CPF</td>
-    <td><h:inputText value="#{pacienteBean.paciente.CPF}" /></td> 
-  </tr>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+		
+			<h1>Cadastro de Paciente</h1>
+			<h:form>
+				<table>
+					<tr>
+						<td>Nome</td>
+						<th><p:inputText value="#{pacienteBean.paciente.nome}" /></th>
+					</tr>
+					<tr>
+						<td>CPF</td>
+						<td><p:inputText value="#{pacienteBean.paciente.CPF}" /></td>
+					</tr>
+					<tr>
+						<td>Idade</td>
+						<td><p:inputText value="#{pacienteBean.paciente.idade}" /></td>
+					</tr>
+					<tr>
+						<td>Altura</td>
+						<td><p:inputText value="#{pacienteBean.paciente.altura}" /></td>
+					</tr>
+					<tr>
+						<td>Peso</td>
+						<td><p:inputText value="#{pacienteBean.paciente.peso}" /></td>
+					</tr>
+				</table>
+				<p:commandButton action="#{pacienteBean.create()}" value="Salvar" />
+			</h:form>
 
-  <tr>
-    <td>Altura</td>
-    <td><h:inputText value="#{pacienteBean.paciente.altura}" /></td> 
-  </tr>
-  
-  
-  <tr>
-    <td>Peso</td>
-    <td><h:inputText value="#{pacienteBean.paciente.peso}" /></td> 
-  </tr>
-</table>
-	<h:commandButton action="#{pacienteBean.create()}" value="Enviar" />
-	 
-</h:form>
-
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

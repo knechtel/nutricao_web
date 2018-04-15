@@ -6,35 +6,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
+	<title>Portal Nutris</title>
+	<link rel="shortcut icon" href="#{resource['images/favicon.ico']}" />
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<h1>Usuário cadastrado com sucesso!</h1>
-	<h:form>
-
-
-		<table>
-
-			<tr>
-
-				<td><br> <a
-						href="http://localhost:8080/nutricao_web/faces/index.xhtml">login</a></br></td>
-			</tr>
-
-			<tr>
-
-				<td><br> <a
-						href="http://localhost:8080/nutricao_web/faces/createUsr/index.xhtml">Cadastrar
-							outro usuário</a></br></td>
-			</tr>
-
-
-
-
-		</table>
-
-	</h:form>
-
+	<div class="sign-in">
+		<h:graphicImage library="images" name="watermelon.png" />
+		<h1>Portal Nutris</h1>
+		<h3>Usuário cadastrado com sucesso!</h3>
+		<h:form>
+			<a href="http://localhost:8080/nutricao_web/faces/index.xhtml">Fazer login</a>
+			<a href="http://localhost:8080/nutricao_web/faces/createUsr/index.xhtml">Cadastrar outro usuário</a>
+		</h:form>
+	</div>
 </h:body>
 </html>

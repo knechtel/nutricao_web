@@ -6,103 +6,84 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
-	<h1>Exames do paciente</h1>
-	<h:form id="form">
-		<table>
-
-			<tr>
-				<td>Nome</td>
-				<td><h:outputText value="#{pacienteBean.paciente.nome}" /></td>
-			</tr>
-
-
-			<tr>
-				<td>CPF</td>
-				<td><h:outputText value="#{pacienteBean.paciente.CPF}" /></td>
-			</tr>
-
-			<tr>
-				<td>Altura</td>
-				<td><h:outputText value="#{pacienteBean.paciente.altura}" /></td>
-			</tr>
-
-			<tr>
-				<td>Idade</td>
-				<td><h:outputText value="#{pacienteBean.paciente.idade}" /></td>
-			</tr>
-
-			<tr>
-				<td>Peso</td>
-				<td><h:outputText value="#{pacienteBean.paciente.peso}" /></td>
-			</tr>
-
-
-
-		</table>
-		<p:commandButton value="Editar" type="button"
-			onclick="PF('dlg2').show();" />
-
-		<p:dialog header="Editar " widgetVar="dlg2" modal="true"
-			height="200">
-			<table>
-				<tr>
-					<td>Nome</td>
-					<td><h:inputText value="#{pacienteBean.paciente.nome}" /></td>
-					
-					
-				</tr>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+		
+			<h1>Perfil do Paciente</h1>
+			<h:form id="form">
+				<table>
+					<tr>
+						<td>Nome</td>
+						<td><h:outputText value="#{pacienteBean.paciente.nome}" /></td>
+					</tr>
+					<tr>
+						<td>CPF</td>
+						<td><h:outputText value="#{pacienteBean.paciente.CPF}" /></td>
+					</tr>
+					<tr>
+						<td>Altura</td>
+						<td><h:outputText value="#{pacienteBean.paciente.altura}" /></td>
+					</tr>
+					<tr>
+						<td>Idade</td>
+						<td><h:outputText value="#{pacienteBean.paciente.idade}" /></td>
+					</tr>
+					<tr>
+						<td>Peso</td>
+						<td><h:outputText value="#{pacienteBean.paciente.peso}" /></td>
+					</tr>
+				</table>
 				
+				<p:commandButton value="Editar" type="button"
+					onclick="PF('dlg2').show();" />
+		
+				<p:dialog header="Editar " widgetVar="dlg2" modal="true" height="200">
+					<table>
+						<tr>
+							<td>Nome</td>
+							<td><p:inputText value="#{pacienteBean.paciente.nome}" /></td>
+						</tr>
+						<tr>
+							<td>CPF</td>
+							<td><p:inputText value="#{pacienteBean.paciente.CPF}" /></td>
+						</tr>
+						<tr>
+							<td>Idade</td>
+							<td><p:inputText value="#{pacienteBean.paciente.idade}" /></td>
+						</tr>
+						<tr>
+							<td>Altura</td>
+							<td><p:inputText value="#{pacienteBean.paciente.altura}" /></td>
+						</tr>
+						<tr>
+							<td>Peso</td>
+							<td><p:inputText value="#{pacienteBean.paciente.peso}" /></td>
+						</tr>
+					</table>
+					<p:commandButton action="#{pacienteBean.update()}" onclick="PF('dlg2').hide();" value="Salvar" />
+				</p:dialog>
+		
+				<p:dataTable var="exame" paginator="true"
+					value="#{pacienteBean.listExame}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{exame.nome}" />
+					</p:column>
+					<p:column headerText="Resultado">
+						<h:outputText value="#{exame.resultado}" />
+					</p:column>
+					<p:column headerText="Data de realização">
+						<h:outputText value="#{exame.dataRealizacao}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Delete"
+							action="#{pacienteBean.deleteExameAction(exame)}" />
+					</p:column>
+				</p:dataTable>
 				
-				<tr>
-					<td>CPF</td>
-					<td><h:inputText value="#{pacienteBean.paciente.CPF}" /></td>
-				</tr>
-				<tr>
-					<td>Idade</td>
-					<td><h:inputText value="#{pacienteBean.paciente.idade}" /></td>
-				</tr>
-				
-				<tr>
-					<td>Peso</td>
-					<td><h:inputText value="#{pacienteBean.paciente.peso}" /></td>
-				</tr>
-				
-				
-			</table>
-			<h:commandButton action="#{pacienteBean.update()}" value="Salvar" />
-		</p:dialog>
-
-		<p:dataTable var="exame" paginator="true"
-			value="#{pacienteBean.listExame}">
-			<p:column headerText="Id">
-				<h:outputText value="#{exame.id}" />
-			</p:column>
-
-			<p:column headerText="nome">
-				<h:outputText value="#{exame.nome}" />
-			</p:column>
-			<p:column headerText="resultado">
-				<h:outputText value="#{exame.resultado}" />
-			</p:column>
-
-
-			<p:column headerText="Data realização">
-				<h:outputText value="#{exame.dataRealizacao}" />
-			</p:column>
-
-			<p:column headerText="">
-				<h:commandLink value="Delete"
-					action="#{pacienteBean.deleteExameAction(exame)}" />
-			</p:column>
-
-
-		</p:dataTable>
-		<td><h:commandLink action="#{pacienteBean.doHome()}" value="Home" /></td>
-	</h:form>
-
+			</h:form>
+	
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

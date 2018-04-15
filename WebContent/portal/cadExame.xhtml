@@ -6,76 +6,70 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-
-<script type="text/javascript">
-	PrimeFaces.locales['pt'] = {
-		closeText: 'Fechar',
-		prevText: 'Anterior',
-		nextText: 'Próximo',
-		currentText: 'Começo',
-		monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-		monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
-		dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
-		dayNamesMin: ['D','S','T','Q','Q','S','S'],
-		weekHeader: 'Semana',
-		firstDay: 0,
-		isRTL: false,
-		showMonthAfterYear: false,
-		yearSuffix: '',
-		timeOnlyTitle: 'Só Horas',
-		timeText: 'Tempo',
-		hourText: 'Hora',
-		minuteText: 'Minuto',
-		secondText: 'Segundo',
-		ampm: false,
-		month: 'Mês',
-		week: 'Semana',
-		day: 'Dia',
-		allDayText : 'Todo o Dia'
-	}
-</script>
-</h:head>
 <h:body>
-	<h1>Cadastro de Exames</h1>
-	<h:form>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
 
-
-		<table>
-			<tr>
-				<td>Nome do paciente</td>
-				<td><p:selectOneMenu value="#{exameBean.idPaciente}"
-						id="paciente">
-						<f:selectItems value="#{exameBean.listPaciente}" var="paciente"
-							itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
-					</p:selectOneMenu></td>
-			</tr>
+			<h1>Cadastro de Exames</h1>
+			<h:form>
+				<table>
+					<tr>
+						<td>Nome do paciente</td>
+						<td><p:selectOneMenu value="#{exameBean.idPaciente}"
+								id="paciente">
+								<f:selectItems value="#{exameBean.listPaciente}" var="paciente"
+									itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
+							</p:selectOneMenu></td>
+					</tr>
+					<tr>
+						<td>Nome do Exame</td>
+						<td><p:inputText value="#{exameBean.exame.nome}" /></td>
+					</tr>
+					<tr>
+						<td>Resultado</td>
+						<td><p:inputTextarea value="#{exameBean.exame.resultado}" /></td>
+					</tr>
+					<tr>
+						<td>Data da realização</td>
+						<td><p:calendar id="button"
+								value="#{exameBean.exame.dataRealizacao}" pattern="dd/MM/yyyy"
+								showOn="button" /></td>
+					</tr>
+				</table>
+				<p:commandButton action="#{exameBean.persist()}" value="Enviar" />
+			</h:form>
 			
-				<tr>
-				<td>Nome do Exame</td>
-				<td><p:inputText value="#{exameBean.exame.nome}"/></td>
-			</tr>
 			
+			<script type="text/javascript">
+				PrimeFaces.locales['pt'] = {
+					closeText: 'Fechar',
+					prevText: 'Anterior',
+					nextText: 'Próximo',
+					currentText: 'Começo',
+					monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+					monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
+					dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+					dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+					dayNamesMin: ['D','S','T','Q','Q','S','S'],
+					weekHeader: 'Semana',
+					firstDay: 0,
+					isRTL: false,
+					showMonthAfterYear: false,
+					yearSuffix: '',
+					timeOnlyTitle: 'Só Horas',
+					timeText: 'Tempo',
+					hourText: 'Hora',
+					minuteText: 'Minuto',
+					secondText: 'Segundo',
+					ampm: false,
+					month: 'Mês',
+					week: 'Semana',
+					day: 'Dia',
+					allDayText : 'Todo o Dia'
+				}
+			</script>
 
-			<tr>
-				<td>Resultado</td>
-
-				<td><p:inputTextarea value="#{exameBean.exame.resultado}" /></td>
-
-			</tr>
-
-			<tr>
-				<td>Data da realização</td>
-				<td><p:calendar id="button"
-						value="#{exameBean.exame.dataRealizacao}" pattern="dd/MM/yyyy" showOn="button" /></td>
-			</tr>
-
-		</table>
-		<h:commandButton action="#{exameBean.persist()}" value="Enviar" />
-
-	</h:form>
-
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

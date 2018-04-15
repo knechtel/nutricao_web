@@ -6,34 +6,35 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
-	<h1>Profissional de Saude </h1>
-<h:form>
-	
-	
-	<table>
-  <tr>
-    <td>Nome</td>
-    <th> <h:inputText value="#{profissiobalSaudeBean.profissionalSaude.nome}" /></th> 
-  </tr>
-  <tr>
-    <td>CPF</td>
-    <td><h:inputText value="#{profissiobalSaudeBean.profissionalSaude.cpf}" /></td> 
-  </tr>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+		
+	<h1>Profissional da Saúde</h1>
+	<h:form>
+		<table>
+			<tr>
+				<td>Nome</td>
+				<th><p:inputText
+						value="#{profissiobalSaudeBean.profissionalSaude.nome}" /></th>
+			</tr>
+			<tr>
+				<td>CPF</td>
+				<td><p:inputText
+						value="#{profissiobalSaudeBean.profissionalSaude.cpf}" /></td>
+			</tr>
 
-  <tr>
-    <td>Tipo</td>
-    <td><h:inputText value="#{profissiobalSaudeBean.profissionalSaude.tipo}" /></td> 
-  </tr>
-  
-  
-</table>
-	<h:commandButton action="#{profissiobalSaudeBean.create()}" value="Enviar" />
-	 
-</h:form>
+			<tr>
+				<td>Tipo</td>
+				<td><p:inputText
+						value="#{profissiobalSaudeBean.profissionalSaude.tipo}" /></td>
+			</tr>
+		</table>
+		<p:commandButton action="#{profissiobalSaudeBean.create()}"
+			value="Enviar" />
+	</h:form>
 
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

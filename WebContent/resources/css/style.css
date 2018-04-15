@@ -1,0 +1,47 @@
+body {
+	background-color: #f5f5f5;
+	font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+h1,h2,h3 {
+	color: #343a40;
+}
+
+.logo {
+	vertical-align: middle;
+    width: 48px;
+    margin: 0 10px;
+}
+
+.container {
+	margin: 0 auto;
+	width: 600px;
+}
+
+a:hover {
+	color: #0457a0;
+	text-decoration: none;
+}
+
+/* logon page */
+
+.sign-in {
+	margin: 50px auto 0;
+	width: 300px;
+	text-align: center;
+}
+
+.sign-in input {
+	padding: 8px;
+	margin-bottom: 3px;
+}
+
+.sign-in button {
+	display: block;
+	margin: 0 auto;
+}
+
+.sign-in a {
+	display: block;
+	margin-top: 20px;
+}

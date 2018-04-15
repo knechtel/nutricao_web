@@ -6,28 +6,22 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
+	<title>Portal Nutris</title>
+	<link rel="shortcut icon" href="#{resource['images/favicon.ico']}" />
+	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<h1>Portal Nutris - Criar Usuário</h1>
-
-	<h:form>
-	
-	<table>
-  <tr>
-    <td>Email</td>
-    <th> <h:inputText value="#{createUsuarioBean.usuario.nome}" /></th> 
-  </tr>
-  <tr>
-    <td>Senha</td>
-    <td><h:inputSecret value="#{createUsuarioBean.usuario.password}" /></td> 
-</tr>
-</table>
-	<h:commandButton action="#{createUsuarioBean.createUsuario()}" value="Enviar" />
-	 		<br>
-	<a href="http://localhost:8080/nutricao_web/faces/index.xhtml">login</a></br>
-	</h:form>	
-
+	<div class="sign-in">
+		<h:graphicImage library="images" name="watermelon.png" />
+		<h1>Portal Nutris</h1>
+		<h3>Criar Usuário</h3>
+		<h:form>
+			<p:inputText value="#{createUsuarioBean.usuario.nome}" placeholder="E-mail" />
+		    <p:password value="#{createUsuarioBean.usuario.password}" placeholder="Senha" />
+			<p:commandButton action="#{createUsuarioBean.createUsuario()}" value="Cadastrar" />
+			<a href="http://localhost:8080/nutricao_web/faces/index.xhtml">Fazer login</a>
+		</h:form>	
+	</div>
 </h:body>
 </html>

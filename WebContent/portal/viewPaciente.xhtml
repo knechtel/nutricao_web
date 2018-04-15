@@ -6,46 +6,37 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
-	<h1>Pacientes cadastrados</h1>
-<h:form id="form" >
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
 	
-
-  <p:dataTable var="paciente"  paginator="true" value="#{pacienteBean.listPaciente}" >
-    <p:column headerText="Id">
-        <h:outputText value="#{paciente.id}" />
-    </p:column>
-          
-    <p:column headerText="Nome">
-        <h:outputText value="#{paciente.nome}" />
-    </p:column>
- 
-    <p:column headerText="CPF">
-        <h:outputText value="#{paciente.CPF}" />
-    </p:column>
-    
-       <p:column headerText="Altura">
-        <h:outputText value="#{paciente.altura}" />
-    </p:column>
-    
-       <p:column headerText="Peso">
-        <h:outputText value="#{paciente.peso}" />
-    </p:column>
- 
-    <p:column headerText="">
-     <h:commandLink value="Delete" action="#{pacienteBean.deleteAction(paciente)}" />
-    </p:column>
-    
-       <p:column headerText="">
-     <h:commandLink value="Exames" action="#{pacienteBean.examesAction(paciente)}" />
-    </p:column>
-</p:dataTable>
-	 	<td><h:commandLink action="#{pacienteBean.doHome()}"
-						value="Home" /></td>
-</h:form>
-
+			<h1>Pacientes cadastrados</h1>
+			
+			<p>
+				<p:commandLink action="#{usuarioBean.doAgenda()}"
+					value="Cadastro de Pacientes" /> | 
+				<p:commandLink action="#{usuarioBean.doCadExames()}"
+					value="Cadastro de Exames" />
+			</p>
+			
+			<h:form id="form">
+				<p:dataTable var="paciente" paginator="true"
+					value="#{pacienteBean.listPaciente}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{paciente.nome}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Ver Perfil"
+							action="#{pacienteBean.examesAction(paciente)}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Delete"
+							action="#{pacienteBean.deleteAction(paciente)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+			
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

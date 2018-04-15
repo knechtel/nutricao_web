@@ -6,38 +6,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+		
 	<h1>Profissional cadastrado com sucesso!</h1>
 	<h:form>
-
-
 		<table>
-
 			<tr>
-
-				<td>
-				<h:commandLink action="#{usuarioBean.doIndex()}" value="Home" />
-				</td>
+				<td><a href="http://localhost:8080/nutricao_web/faces/portal/cadPrSaude/cadPrSaude.xhtml">Cadastrar Novo</a></td>
 			</tr>
-
-			<tr>
-
-				<td>
-					<a
-			href="http://localhost:8080/nutricao_web/faces/portal/cadPrSaude/cadPrSaude.xhtml">Cadastro
-				profissional de Saude</a>
-				</td>
-			</tr>
-
-
-
-
 		</table>
-
 	</h:form>
-
+	
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

@@ -6,32 +6,23 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-</h:head>
 <h:body>
-	<h1>Exame cadastrado com sucesso!</h1>
-	<h:form>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+		
+			<h2>Exame cadastrado com sucesso!</h2>
+			<h:form>
+				<table>
+					<tr>
+						<td><h:commandLink action="#{usuarioBean.doCadExames()}" value="Cadastrar novo exame" /></td>
+					</tr>
+					<tr>
+						<td><h:commandLink action="#{usuarioBean.doIndex()}" value="Home" /></td>
+					</tr>
+				</table>
+			</h:form>
 
-
-		<table>
-
-			<tr>
-
-				<td><h:commandLink action="#{usuarioBean.doCadExames()}" value="cadastrar novo exame" /></td>
-			</tr>
-
-			<tr>
-
-				<td><h:commandLink action="#{usuarioBean.doIndex()}" value="Home" /></td>
-			</tr>
-
-
-
-
-		</table>
-
-	</h:form>
-
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
