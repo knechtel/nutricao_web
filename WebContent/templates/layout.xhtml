@@ -15,9 +15,9 @@
 	<div class="container">
 		<h1><h:graphicImage library="images" name="watermelon.png" class="logo" />Portal Nutris</h1>
 		<h:form>
-			<a href="http://localhost:8080/nutricao_web/faces/portal/index.xhtml">Início</a> | 
-			<a href="http://localhost:8080/nutricao_web/faces/portal/viewPaciente.xhtml">Pacientes</a> | 
-			<a href="http://localhost:8080/nutricao_web/faces/portal/viewPrSaude.xhtml">Profissionais de Saúde</a>
+			<a href="#{request.contextPath}/faces/portal/index.xhtml">Início</a> | 
+			<a href="#{request.contextPath}/faces/portal/viewPaciente.xhtml">Pacientes</a> | 
+			<a href="#{request.contextPath}/faces/portal/viewPrSaude.xhtml">Profissionais de Saúde</a>
 		</h:form>
 	  	<ui:insert name="content" />
 	</div>
