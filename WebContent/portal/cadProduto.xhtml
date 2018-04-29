@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+
+			<h1>Cadastro de Produto</h1>
+			<h:form>
+				<table>
+					<tr>
+						<td>Descricao</td>
+						<th><p:inputText value="#{produtoBean.produto.descricao}" /></th>
+					</tr>
+					<tr>
+						<td>Preco</td>
+						<td><p:inputText value="#{produtoBean.produto.preco}" /></td>
+					</tr>
+					<tr>
+						<td>Quantidade estoque</td>
+						<td><p:inputText value="#{produtoBean.produto.qtdEstoque}" /></td>
+					</tr>
+					<tr>
+						<td>Categoria</td>
+						<td><p:inputText value="#{produtoBean.produto.categoria}" /></td>
+					</tr>
+
+				</table>
+				<p:commandButton action="#{produtoBean.create()}" value="Salvar" />
+
+
+				<p:dataTable var="produto" paginator="true"
+					value="#{produtoBean.listProduto}">
+					<p:column headerText="Id">
+						<h:outputText value="#{produto.id}" />
+					</p:column>
+					<p:column headerText="Descricao">
+						<h:outputText value="#{produto.descricao}" />
+					</p:column>
+					<p:column headerText="Preço">
+						<h:outputText value="#{produto.preco}" />
+					</p:column>
+
+					<p:column headerText="">
+						<h:commandLink value="Delete"
+							action="#{produtoBean.deleteAction(produto)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
