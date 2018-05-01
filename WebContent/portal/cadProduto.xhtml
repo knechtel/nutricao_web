@@ -7,11 +7,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
+
 	<ui:composition template="/templates/layout.xhtml">
 		<ui:define name="content">
 
 			<h1>Cadastro de Produto</h1>
-			<h:form>
+			<h:form id="form">
 				<table>
 					<tr>
 						<td>Descricao</td>
@@ -19,7 +20,7 @@
 					</tr>
 					<tr>
 						<td>Preco</td>
-						<td><p:inputText value="#{produtoBean.produto.preco}" /></td>
+						<td><p:inputText id="valor" value="#{produtoBean.moeda}" /></td>
 					</tr>
 					<tr>
 						<td>Quantidade estoque</td>
@@ -51,9 +52,19 @@
 							action="#{produtoBean.deleteAction(produto)}" />
 					</p:column>
 				</p:dataTable>
+				<script type="text/javascript">
+$(function(){
+ $("#form\\:valor").maskMoney({symbol:'R$ ', 
+showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
+ })
+	</script>
+
 			</h:form>
 
 		</ui:define>
 	</ui:composition>
+
 </h:body>
+
+
 </html>
