@@ -52,19 +52,17 @@
 					</p:column>
 				</p:dataTable>
 				
-				
+				<script type="text/javascript">
+					$(function(){
+					 $("#form\\:valor").maskMoney({symbol:'R$ ', 
+					showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
+					 })
+				</script>
 
 			</h:form>
 
 		</ui:define>
 	</ui:composition>
-	
-	<script type="text/javascript">
-		$(function(){
-		 $("#form\\:valor").maskMoney({symbol:'R$ ', 
-		showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
-		 })
-	</script>
 
 </h:body>
 
