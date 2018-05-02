@@ -15,15 +15,15 @@
 			<h:form id="form">
 				<table>
 					<tr>
-						<td>Descricao</td>
+						<td>Descrição</td>
 						<th><p:inputText value="#{produtoBean.produto.descricao}" /></th>
 					</tr>
 					<tr>
-						<td>Preco</td>
+						<td>Preço</td>
 						<td><p:inputText id="valor" value="#{produtoBean.moeda}" /></td>
 					</tr>
 					<tr>
-						<td>Quantidade estoque</td>
+						<td>Qtde em estoque</td>
 						<td><p:inputText value="#{produtoBean.produto.qtdEstoque}" /></td>
 					</tr>
 					<tr>
@@ -37,34 +37,35 @@
 
 				<p:dataTable var="produto" paginator="true"
 					value="#{produtoBean.listProduto}">
-					<p:column headerText="Id">
-						<h:outputText value="#{produto.id}" />
-					</p:column>
 					<p:column headerText="Descricao">
 						<h:outputText value="#{produto.descricao}" />
 					</p:column>
 					<p:column headerText="Preço">
 						<h:outputText value="#{produto.preco}" />
 					</p:column>
-
+					<p:column headerText="Qtde Estoque">
+						<h:outputText value="#{produto.qtdEstoque}" />
+					</p:column>
 					<p:column headerText="">
 						<h:commandLink value="Delete"
 							action="#{produtoBean.deleteAction(produto)}" />
 					</p:column>
 				</p:dataTable>
-				<script type="text/javascript">
-$(function(){
- $("#form\\:valor").maskMoney({symbol:'R$ ', 
-showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
- })
-	</script>
+				
+				
 
 			</h:form>
 
 		</ui:define>
 	</ui:composition>
+	
+	<script type="text/javascript">
+		$(function(){
+		 $("#form\\:valor").maskMoney({symbol:'R$ ', 
+		showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
+		 })
+	</script>
 
 </h:body>
-
 
 </html>
