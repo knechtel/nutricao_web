@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+
+			<h1>Cadastro de Plano Alimentar</h1>
+			
+			<h:form id="form">
+			
+				<table>
+					<tr>
+						<td>Paciente</td>
+						<td>
+							<p:selectOneMenu value="#{planoAlimentarBean.idPaciente}"
+								id="paciente">
+								<f:selectItems value="#{planoAlimentarBean.listPaciente}" var="paciente"
+									itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
+							</p:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td>Nome</td>
+						<th><p:inputText value="#{planoAlimentarBean.plano.nome}" /></th>
+					</tr>
+					<tr>
+						<td>Descrição</td>
+						<td><p:inputText value="#{planoAlimentarBean.plano.descricao}" /></td>
+					</tr>
+				</table>
+			
+				<h3>Alimentos</h3>
+			
+				<table>
+					<tr>
+						<td>Dia</td>
+						<td>
+							<p:selectOneMenu value="#{planoAlimentarBean.item.dia}" id="dia">
+								<f:selectItem itemLabel="Domingo" itemValue="1" />
+								<f:selectItem itemLabel="Segunda" itemValue="2" />
+								<f:selectItem itemLabel="Terça" itemValue="3" />
+								<f:selectItem itemLabel="Quarta" itemValue="4" />
+								<f:selectItem itemLabel="Quinta" itemValue="5" />
+								<f:selectItem itemLabel="Sexta" itemValue="6" />
+								<f:selectItem itemLabel="Sábado" itemValue="7" />
+							</p:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td>Turno</td>
+						<td>
+							<p:selectOneMenu value="#{planoAlimentarBean.item.turno}" id="turno">
+								<f:selectItem itemLabel="Café" itemValue="1" />
+								<f:selectItem itemLabel="Almoço" itemValue="2" />
+								<f:selectItem itemLabel="Janta" itemValue="3" />
+							</p:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td>Alimento</td>
+						<td>
+							<p:selectOneMenu value="#{planoAlimentarBean.idAlimento}"
+								id="alimento">
+								<f:selectItems value="#{planoAlimentarBean.listAlimento}" var="alimento"
+									itemLabel="#{alimento.nome}" itemValue="#{alimento.id}" />
+							</p:selectOneMenu>
+						</td>
+					</tr>
+					<tr>
+						<td>Qtde</td>
+						<td><p:inputNumber id="qtde" value="#{planoAlimentarBean.item.quantidade}"/></td>
+					</tr> 
+					<tr>
+						<td>Opção</td>
+						<td>
+							<p:selectOneMenu value="#{planoAlimentarBean.item.opcao}" id="opcao">
+								<f:selectItem itemLabel="1" itemValue="1" />
+								<f:selectItem itemLabel="2" itemValue="2" />
+								<f:selectItem itemLabel="3" itemValue="3" />
+							</p:selectOneMenu>
+						</td>
+					</tr>
+				</table>
+				
+				<p:commandButton action="#{planoAlimentarBean.addItem()}" value="Adicionar" update="itensTable" />
+				
+			</h:form>
+
+			<p:dataTable var="item" paginator="true"
+				value="#{planoAlimentarBean.listItens}" id="itensTable">
+				<p:column headerText="Dia / Turno">
+					<h:outputText value="#{item.dia} | #{item.turno}" />
+				</p:column>
+				<p:column headerText="Opção">
+					<h:outputText value="#{item.opcao}" />
+				</p:column>
+				<p:column headerText="Alimento">
+					<h:outputText value="#{item.alimento.nome}" />
+				</p:column>
+				<p:column headerText="Qtde">
+					<h:outputText value="#{item.quantidade}" />
+				</p:column>
+			</p:dataTable>
+			
+			<p:commandButton action="#{planoAlimentarBean.create()}" value="Finalizar" />
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
