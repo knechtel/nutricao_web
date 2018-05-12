@@ -63,6 +63,8 @@
 					</table>
 					<p:commandButton action="#{pacienteBean.update()}" onclick="PF('dlg2').hide();" value="Salvar" />
 				</p:dialog>
+				
+				<h3>Exames</h3>
 		
 				<p:dataTable var="exame" paginator="true"
 					value="#{pacienteBean.listExame}">
@@ -72,8 +74,10 @@
 					<p:column headerText="Resultado">
 						<h:outputText value="#{exame.resultado}" />
 					</p:column>
-					<p:column headerText="Data de realização">
-						<h:outputText value="#{exame.dataRealizacao}" />
+					<p:column headerText="Data">
+						<h:outputText value="#{exame.dataRealizacao}">
+							<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+						</h:outputText>
 					</p:column>
 					<p:column headerText="">
 						<h:commandLink value="Delete"
