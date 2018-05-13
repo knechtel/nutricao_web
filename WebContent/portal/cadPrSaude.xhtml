@@ -7,34 +7,55 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
-	<ui:composition template="/templates/layout.xhtml">
-		<ui:define name="content">
+<ui:composition template="/templates/layout.xhtml">
+	<ui:define name="content">
 		
-	<h1>Profissional da Saúde</h1>
-	<h:form>
-		<table>
-			<tr>
-				<td>Nome</td>
-				<th><p:inputText
-						value="#{profissiobalSaudeBean.profissionalSaude.nome}" /></th>
-			</tr>
-			<tr>
-				<td>CPF</td>
-				<td><p:inputText
-						value="#{profissiobalSaudeBean.profissionalSaude.cpf}" /></td>
-			</tr>
+		<h1>Profissionais da Saúde</h1>
+		
+		<h:form>
+			<table>
+				<tr>
+					<td>Nome</td>
+					<th><p:inputText
+							value="#{profissiobalSaudeBean.profissionalSaude.nome}" /></th>
+				</tr>
+				<tr>
+					<td>CPF</td>
+					<td><p:inputNumber value="#{profissiobalSaudeBean.profissionalSaude.cpf}"
+							maxValue="99999999999"
+							decimalSeparator=""
+							thousandSeparator="" />
+					</td>
+				</tr>
+	
+				<tr>
+					<td>Tipo</td>
+					<td><p:inputText
+							value="#{profissiobalSaudeBean.profissionalSaude.tipo}" /></td>
+				</tr>
+			</table>
+			<p:commandButton action="#{profissiobalSaudeBean.create()}"
+				value="Salvar" />
+				
+			<p:dataTable var="profissional" paginator="true"
+				value="#{profissiobalSaudeBean.listProfissionalSaude}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{profissional.nome}" />
+				</p:column>
+				<p:column headerText="Tipo">
+					<h:outputText value="#{profissional.tipo}" />
+				</p:column>
+				<p:column headerText="CPF">
+					<h:outputText value="#{profissional.cpf}" />
+				</p:column>
+				<p:column headerText="">
+					<h:commandLink value="Remover"
+						action="#{profissiobalSaudeBean.deleteAction(profissional)}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 
-			<tr>
-				<td>Tipo</td>
-				<td><p:inputText
-						value="#{profissiobalSaudeBean.profissionalSaude.tipo}" /></td>
-			</tr>
-		</table>
-		<p:commandButton action="#{profissiobalSaudeBean.create()}"
-			value="Enviar" />
-	</h:form>
-
-		</ui:define>
-	</ui:composition>
+	</ui:define>
+</ui:composition>
 </h:body>
 </html>
