@@ -45,3 +45,9 @@ a:hover {
 	display: block;
 	margin-top: 20px;
 }
+
+/* overriding theme */
+
+.ui-menu.ui-widget .ui-separator {
+	border-bottom: 1px solid #dedede;
+}
