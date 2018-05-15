@@ -11,24 +11,11 @@
 	<ui:composition template="/templates/layout.xhtml">
 		<ui:define name="content">
 
-			<h1>Cadastro de Plano Alimentar</h1>
-			<f:metadata>
-				<f:viewAction action="#{planoAlimentarBean.loadPacientes}" />
-			</f:metadata>
+			<h1>Cadastro de Plano Alimentar Padrão</h1>
 			
 			<h:form id="form">
 			
 				<table>
-					<tr>
-						<td>Paciente</td>
-						<td>
-							<p:selectOneMenu value="#{planoAlimentarBean.idPaciente}"
-								id="paciente">
-								<f:selectItems value="#{planoAlimentarBean.listPaciente}" var="paciente"
-									itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
-							</p:selectOneMenu>
-						</td>
-					</tr>
 					<tr>
 						<td>Nome</td>
 						<th><p:inputText value="#{planoAlimentarBean.plano.nome}" /></th>
@@ -38,24 +25,8 @@
 						<td><p:inputText value="#{planoAlimentarBean.plano.descricao}" /></td>
 					</tr>
 				</table>
-				
-				<h3>Atribuir Plano Padrão</h3>
-				
-				<table>
-					<tr>
-						<td></td>
-						<td>
-							<p:selectOneMenu value="#{planoAlimentarBean.idPlanoPadrao}"
-								id="planoPadrao">
-								<f:selectItem itemLabel="Sem seleção" itemValue="0" />
-								<f:selectItems value="#{planoAlimentarBean.listPlanosPadrao}" var="plano"
-									itemLabel="#{plano.nome}" itemValue="#{plano.id}" />
-							</p:selectOneMenu>
-						</td>
-					</tr>
-				</table>
 			
-				<h3>Criar Plano</h3>
+				<h3>Alimentos</h3>
 			
 				<table>
 					<tr>
