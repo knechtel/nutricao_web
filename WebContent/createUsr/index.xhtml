@@ -17,10 +17,11 @@
 		<h1>Portal Nutris</h1>
 		<h3>Criar Usuário</h3>
 		<h:form>
-			<p:inputText value="#{createUsuarioBean.usuario.nome}" placeholder="E-mail" />
+			<p:inputText value="#{createUsuarioBean.usuario.nome}" placeholder="Nome" />
+			<p:inputText value="#{createUsuarioBean.usuario.email}" placeholder="E-mail" />
 		    <p:password value="#{createUsuarioBean.usuario.password}" placeholder="Senha" />
 			<p:commandButton action="#{createUsuarioBean.createUsuario()}" value="Cadastrar" />
-			<a href="http://localhost:8080/nutricao_web/faces/index.xhtml">Fazer login</a>
+			<a href="#{request.contextPath}/index.xhtml">Fazer login</a>
 		</h:form>	
 	</div>
 </h:body>

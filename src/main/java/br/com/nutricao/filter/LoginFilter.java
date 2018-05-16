@@ -38,23 +38,14 @@ public class LoginFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-
-		if(usuarioBean==null) {
-
-			String contextPath = ((HttpServletRequest) request).getContextPath();
-			System.out.println("context path "+contextPath);
-			((HttpServletResponse) response).sendRedirect(contextPath + "/faces/index.xhtml");
-		}
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
+			throws IOException, ServletException
+	{
 		if (usuarioBean == null || !usuarioBean.isLoggedIn()) {
 			String contextPath = ((HttpServletRequest) request).getContextPath();
 			System.out.println("context path "+contextPath);
-			((HttpServletResponse) response).sendRedirect(contextPath + "/faces/index.xhtml");
-
+			((HttpServletResponse) response).sendRedirect(contextPath + "/index.xhtml");
 		} else {
-			// Caso ele esteja logado, apenas deixamos
-			// que o fluxo continue
 			chain.doFilter(request, response);
 		}
 	}

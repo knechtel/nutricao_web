@@ -19,8 +19,7 @@
 			<p:inputText value="#{usuarioBean.email}" placeholder="E-mail" />
 			<p:password value="#{usuarioBean.password}" placeholder="Senha" />
 			<p:commandButton action="#{usuarioBean.doLogin()}" value="Entrar" />
-			<h:commandLink action="#{usuarioBean.doCadUsuario()}"
-					value="Criar Usuário" />
+			<a href="#{request.contextPath}/createUsr/index.xhtml">Criar Usuário</a>
 		</h:form>
 	</div>
 </h:body>
