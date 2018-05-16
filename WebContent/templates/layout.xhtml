@@ -17,30 +17,30 @@
 		<h1><h:graphicImage library="images" name="watermelon.png" class="logo" />Portal Nutris</h1>
 		<h:form>
 			<p:menubar>
-				<p:menuitem value="Início" url="/faces/portal/index.xhtml" icon="ui-icon-home" />
+				<p:menuitem value="Início" url="/portal/index.xhtml" icon="ui-icon-home" />
 				
 				<p:submenu label="Pacientes" icon="ui-icon-person">
-					<p:menuitem value="Lista de Pacientes" url="/faces/portal/listPacientes.xhtml" />
+					<p:menuitem value="Lista de Pacientes" url="/portal/listPacientes.xhtml" />
 					<p:separator />
-					<p:menuitem value="Cadastro de Pacientes" url="/faces/portal/cadPaciente.xhtml" />
-					<p:menuitem value="Cadastro de Exames" url="/faces/portal/cadExame.xhtml" />
+					<p:menuitem value="Cadastro de Pacientes" url="/portal/cadPaciente.xhtml" />
+					<p:menuitem value="Cadastro de Exames" url="/portal/cadExame.xhtml" />
 				</p:submenu>
 				
 				<p:submenu label="Planos Alimentares" icon="ui-icon-script">
-					<p:menuitem value="Lista de Planos Padrão" url="/faces/portal/listPlanosPadrao.xhtml" />
+					<p:menuitem value="Lista de Planos Padrão" url="/portal/listPlanosPadrao.xhtml" />
 					<p:separator />
-					<p:menuitem value="Cadastrar Padrão" url="/faces/portal/cadPlanoPadrao.xhtml" />
-					<p:menuitem value="Cadastrar para Paciente" url="/faces/portal/cadPlano.xhtml" />
+					<p:menuitem value="Cadastrar Padrão" url="/portal/cadPlanoPadrao.xhtml" />
+					<p:menuitem value="Cadastrar para Paciente" url="/portal/cadPlano.xhtml" />
 				</p:submenu>
 				
 				<p:submenu label="Outros" icon="ui-icon-plus">
-					<p:menuitem value="Alimentos" url="/faces/portal/cadAlimento.xhtml" />
-					<p:menuitem value="Produtos" url="/faces/portal/cadProduto.xhtml" />
-					<p:menuitem value="Profissionais" url="/faces/portal/cadPrSaude.xhtml" />
+					<p:menuitem value="Alimentos" url="/portal/cadAlimento.xhtml" />
+					<p:menuitem value="Produtos" url="/portal/cadProduto.xhtml" />
+					<p:menuitem value="Profissionais" url="/portal/cadPrSaude.xhtml" />
 				</p:submenu>
 			
 				<f:facet name="options">
-					<p:commandButton type="button" value="Sair" icon="ui-icon-extlink" />
+					<p:commandButton action="#{usuarioBean.doLogout()}" value="Sair" icon="ui-icon-extlink" />
 				</f:facet>
 			</p:menubar>
 		</h:form>
