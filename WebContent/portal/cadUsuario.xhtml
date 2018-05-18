@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+
+			<h1>Cadastro de Usuários do Portal</h1>
+			
+			<h:form id="form">
+				<table>
+					<tr>
+						<td>Nome</td>
+						<th><p:inputText value="#{createUsuarioAdminBean.usuario.nome}" /></th>
+					</tr>
+					<tr>
+						<td>E-mail</td>
+						<td><p:inputText value="#{createUsuarioAdminBean.usuario.email}" /></td>
+					</tr>
+					<tr>
+						<td>Senha Inicial</td>
+						<td><p:password value="#{createUsuarioAdminBean.usuario.password}" /></td>
+					</tr>
+
+				</table>
+				<p:commandButton action="#{createUsuarioAdminBean.create()}" value="Salvar" />
+
+				<p:dataTable var="usuario" paginator="true"
+					value="#{createUsuarioAdminBean.listUsuario}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{usuario.nome}" />
+					</p:column>
+					<p:column headerText="E-mail">
+						<h:outputText value="#{usuario.email}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Remover"
+							action="#{createUsuarioAdminBean.delete(usuario)}" />
+					</p:column>
+				</p:dataTable>
+				
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
