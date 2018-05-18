@@ -8,12 +8,28 @@
  </context-param>
  <!--  login filter -->
  <filter>
-  <filter-name>LoginFilter</filter-name>
-  <filter-class>br.com.nutricao.filter.LoginFilter</filter-class>
+  <filter-name>LoginPortalFilter</filter-name>
+  <filter-class>br.com.nutricao.filter.LoginPortalFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>LoginSiteFilter</filter-name>
+  <filter-class>br.com.nutricao.filter.LoginSiteFilter</filter-class>
+ </filter>
+ <filter>
+  <filter-name>LoginIndexFilter</filter-name>
+  <filter-class>br.com.nutricao.filter.LoginIndexFilter</filter-class>
  </filter>
  <filter-mapping>
-  <filter-name>LoginFilter</filter-name>
+  <filter-name>LoginPortalFilter</filter-name>
   <url-pattern>/portal/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>LoginSiteFilter</filter-name>
+  <url-pattern>/site/*</url-pattern>
+ </filter-mapping>
+ <filter-mapping>
+  <filter-name>LoginIndexFilter</filter-name>
+  <url-pattern>/index.xhtml</url-pattern>
  </filter-mapping>
  <servlet>
   <servlet-name>Faces Servlet</servlet-name>

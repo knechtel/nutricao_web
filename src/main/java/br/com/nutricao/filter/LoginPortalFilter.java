@@ -17,14 +17,14 @@ import br.com.nutricao.controller.UsuarioBean;
 /**
  * Servlet Filter implementation class LoginFilter
  */
-public class LoginFilter implements Filter {
+public class LoginPortalFilter implements Filter {
 	@Inject
 	UsuarioBean usuarioBean;
 
 	/**
 	 * Default constructor.
 	 */
-	public LoginFilter() {
+	public LoginPortalFilter() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -41,10 +41,11 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) 
 			throws IOException, ServletException
 	{
+		String contextPath = ((HttpServletRequest) request).getContextPath();
 		if (usuarioBean == null || !usuarioBean.isLoggedIn()) {
-			String contextPath = ((HttpServletRequest) request).getContextPath();
-			System.out.println("context path "+contextPath);
 			((HttpServletResponse) response).sendRedirect(contextPath + "/index.xhtml");
+		} else if (usuarioBean.isLoggedIn() && !usuarioBean.isTipoAdmin()) {
+			((HttpServletResponse) response).sendRedirect(contextPath + "/forbidden.xhtml");
 		} else {
 			chain.doFilter(request, response);
 		}
