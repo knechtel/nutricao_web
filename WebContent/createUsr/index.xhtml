@@ -19,6 +19,13 @@
 		<h:form>
 			<p:inputText value="#{createUsuarioBean.usuario.nome}" placeholder="Nome" />
 			<p:inputText value="#{createUsuarioBean.usuario.email}" placeholder="E-mail" />
+			<p:inputNumber value="#{createUsuarioBean.cpf}"
+							placeholder="CPF"
+							maxValue="99999999999"
+							decimalPlaces="0"
+							leadingZero="keep"
+							decimalSeparator=""
+							thousandSeparator="" />
 		    <p:password value="#{createUsuarioBean.usuario.password}" placeholder="Senha" />
 			<p:commandButton action="#{createUsuarioBean.createUsuario()}" value="Cadastrar" />
 			<a href="#{request.contextPath}/index.xhtml">Fazer login</a>
