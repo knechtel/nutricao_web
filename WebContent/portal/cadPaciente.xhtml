@@ -21,21 +21,23 @@
 						<td>CPF</td>
 						<td><p:inputNumber value="#{pacienteBean.paciente.CPF}"
 							maxValue="99999999999"
+							decimalPlaces="0"
+							leadingZero="keep"
 							decimalSeparator=""
 							thousandSeparator="" />
 						</td>
 					</tr>
 					<tr>
 						<td>Idade</td>
-						<td><p:inputNumber value="#{pacienteBean.paciente.idade}" maxValue="999" /></td>
+						<td><p:inputNumber value="#{pacienteBean.paciente.idade}" maxValue="999" decimalPlaces="0" /></td>
 					</tr>
 					<tr>
 						<td>Altura (cm)</td>
-						<td><p:inputNumber value="#{pacienteBean.paciente.altura}" maxValue="999" /></td>
+						<td><p:inputNumber value="#{pacienteBean.paciente.altura}" maxValue="999" decimalPlaces="0" /></td>
 					</tr>
 					<tr>
 						<td>Peso (kg)</td>
-						<td><p:inputNumber value="#{pacienteBean.paciente.peso}" maxValue="999" /></td>
+						<td><p:inputNumber value="#{pacienteBean.paciente.peso}" maxValue="999" decimalPlaces="2" /></td>
 					</tr>
 				</table>
 				<p:commandButton action="#{pacienteBean.create()}" value="Salvar" />
