@@ -41,8 +41,10 @@ On Eclipse, click on > Help > Eclipse Marketplace. Select the RedHat logo, searc
 <img src='https://2.bp.blogspot.com/-np81tFjRKus/WqcxJ_UAsUI/AAAAAAAADJE/ndAgcGf4CTgq_fDXG5Bb1pFMCaXc0w9WQCLcBGAs/s1600/Screen%2BShot%2B2018-03-12%2Bat%2B23.01.32.png'/>
 </br>
 
-7) On a broswser, access http://localhost:8080/nutricao_web
+7) In a broswser, access http://localhost:8080/nutricao_web/index.xhtml
 
-<br>
-<img src='https://2.bp.blogspot.com/-FGRtNyiNx5w/Wqcy8l0Jf4I/AAAAAAAADJc/DHxcTNtmmw8KKlXLTwX6H79Fr6fO657vgCLcBGAs/s1600/Screen%2BShot%2B2018-03-12%2Bat%2B23.09.00.png'/>
-</br>
+**Note:** the first admin user should be created directly in the database with password hashed using sha256. Example:
+```
+INSERT INTO `usuario` VALUES
+(1,'email@domain.com','Admin','fbfb386efea67e816f2dda0a8c94a98eb203757aebb3f55f183755a192d44467',1,NULL)
+```
