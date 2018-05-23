@@ -64,7 +64,7 @@
 				<h3>Exames</h3>
 		
 				<p:dataTable var="exame" paginator="true"
-					value="#{pacienteBean.listExame}">
+					value="#{pacienteBean.listExames}">
 					<p:column headerText="Nome">
 						<h:outputText value="#{exame.nome}" />
 					</p:column>
@@ -79,6 +79,23 @@
 					<p:column headerText="">
 						<h:commandLink value="Remover"
 							action="#{pacienteBean.deleteExameAction(exame)}" />
+					</p:column>
+				</p:dataTable>
+				
+				<h3>Planos</h3>
+		
+				<p:dataTable var="plano" paginator="true"
+					value="#{pacienteBean.listPlanos}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{plano.nome}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Ver Plano"
+							action="#{pacienteBean.viewPlanoAction(plano)}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Remover"
+							action="#{pacienteBean.deletePlanoAction(plano)}" />
 					</p:column>
 				</p:dataTable>
 				

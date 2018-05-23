@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/templates/layout_site.xhtml">
+		<ui:define name="content">
+			
+			<h1>Exames</h1>
+		
+			<p:dataTable var="exame" value="#{siteBean.listExames}">
+				<p:column headerText="Nome">
+					<h:outputText value="#{exame.nome}" />
+				</p:column>
+				<p:column headerText="Resultado">
+					<h:outputText value="#{exame.resultado}" />
+				</p:column>
+				<p:column headerText="Data">
+					<h:outputText value="#{exame.dataRealizacao}">
+						<f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+	
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

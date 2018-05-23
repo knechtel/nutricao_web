@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/templates/layout_site.xhtml">
+		<ui:define name="content">
+		
+			<h1>Plano: #{siteBean.plano.nome}</h1>
+			<p>#{siteBean.plano.descricao}</p>
+			
+			<p:dataTable var="item" paginator="false"
+					value="#{siteBean.plano.itens}">
+					<p:column headerText="Dia">
+						<h:outputText value="#{item.dia}">
+							<f:converter converterId="diaConverter" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Turno">
+						<h:outputText value="#{item.turno}">
+							<f:converter converterId="turnoConverter" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="Opção">
+						<h:outputText value="#{item.opcao}" />
+					</p:column>
+					<p:column headerText="Alimento">
+						<h:outputText value="#{item.alimento.nome}" />
+					</p:column>
+					<p:column headerText="Qtde">
+						<h:outputText value="#{item.quantidade}" />
+					</p:column>
+					<p:column headerText="Info">
+						<h:outputText value="#{item.info}" />
+					</p:column>
+				</p:dataTable>
+	
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
