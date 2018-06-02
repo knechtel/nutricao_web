@@ -23,10 +23,14 @@ a:hover {
 	text-decoration: none;
 }
 
+th {
+	text-align: left;
+}
+
 /* logon page */
 
 .sign-in {
-	margin: 50px auto 0;
+	margin: 50px auto 20px;
 	width: 300px;
 	text-align: center;
 }

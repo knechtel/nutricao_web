@@ -9,5 +9,7 @@
   <converter-id>turnoConverter</converter-id>
   <converter-class>br.com.nutricao.converter.TurnoConverter</converter-class>
  </converter>
- <application/>
+ <application>
+  <message-bundle>br.com.nutricao.message.CustomMessages</message-bundle>
+ </application>
 </faces-config>

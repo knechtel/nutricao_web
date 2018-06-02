@@ -11,7 +11,8 @@
 		<ui:define name="content">
 
 			<h1>Cadastro de Exames</h1>
-			<h:form>
+			
+			<h:form id="form">
 				<table>
 					<tr>
 						<td>Nome do paciente</td>
@@ -19,11 +20,15 @@
 								id="paciente">
 								<f:selectItems value="#{exameBean.listPaciente}" var="paciente"
 									itemLabel="#{paciente.nome}" itemValue="#{paciente.id}" />
-							</p:selectOneMenu></td>
+							</p:selectOneMenu>
+						</td>
 					</tr>
 					<tr>
 						<td>Nome do Exame</td>
-						<td><p:inputText value="#{exameBean.exame.nome}" /></td>
+						<td>
+							<p:inputText id="nome" label="Nome" value="#{exameBean.exame.nome}" required="true" />
+							<p:message for="nome" />
+						</td>
 					</tr>
 					<tr>
 						<td>Resultado</td>
@@ -31,12 +36,15 @@
 					</tr>
 					<tr>
 						<td>Data da realização</td>
-						<td><p:calendar id="button"
-								value="#{exameBean.exame.dataRealizacao}" pattern="dd/MM/yyyy"
-								showOn="button" /></td>
+						<td>
+							<p:calendar id="button"
+								value="#{exameBean.exame.dataRealizacao}"
+								pattern="dd/MM/yyyy"
+								showOn="button" />
+						</td>
 					</tr>
 				</table>
-				<p:commandButton action="#{exameBean.persist()}" value="Enviar" />
+				<p:commandButton action="#{exameBean.persist()}" value="Enviar" validateClient="true" update="form" />
 			</h:form>
 			
 			

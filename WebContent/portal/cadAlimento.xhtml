@@ -17,19 +17,26 @@
 				<table>
 					<tr>
 						<td>Nome</td>
-						<th><p:inputText value="#{alimentoBean.alimento.nome}" /></th>
+						<td>
+							<p:inputText id="nome" value="#{alimentoBean.alimento.nome}" label="Nome" required="true" />
+							<p:message for="nome" />
+						</td>
 					</tr>
 					<tr>
 						<td>Calorias</td>
-						<td><p:inputText value="#{alimentoBean.alimento.calorias}" /></td>
+						<td>
+							<p:inputText value="#{alimentoBean.alimento.calorias}" />
+						</td>
 					</tr>
 					<tr>
 						<td>Unidade de Medida</td>
-						<td><p:inputText value="#{alimentoBean.alimento.unidadeMedidas}" /></td>
+						<td>
+							<p:inputText value="#{alimentoBean.alimento.unidadeMedidas}" />
+						</td>
 					</tr>
 
 				</table>
-				<p:commandButton action="#{alimentoBean.create()}" value="Salvar" />
+				<p:commandButton action="#{alimentoBean.create()}" value="Salvar" validateClient="true" update="form" />
 
 				<p:dataTable var="alimento" paginator="true"
 					value="#{alimentoBean.listAlimento}">

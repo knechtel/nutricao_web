@@ -12,11 +12,15 @@
 		<ui:define name="content">
 
 			<h1>Cadastro de Produto</h1>
+			
 			<h:form id="form">
 				<table>
 					<tr>
 						<td>Descrição</td>
-						<th><p:inputText value="#{produtoBean.produto.descricao}" /></th>
+						<td>
+							<p:inputText id="descricao" label="Descrição" required="true" value="#{produtoBean.produto.descricao}" />
+							<p:message for="descricao" />
+						</td>
 					</tr>
 					<tr>
 						<td>Preço</td>
@@ -32,8 +36,7 @@
 					</tr>
 
 				</table>
-				<p:commandButton action="#{produtoBean.create()}" value="Salvar" />
-
+				<p:commandButton action="#{produtoBean.create()}" value="Salvar" validateClient="true" update="form" />
 
 				<p:dataTable var="produto" paginator="true"
 					value="#{produtoBean.listProduto}">

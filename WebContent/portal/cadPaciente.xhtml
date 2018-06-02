@@ -11,20 +11,31 @@
 		<ui:define name="content">
 		
 			<h1>Cadastro de Paciente</h1>
-			<h:form>
+			
+			<h:form id="form">
 				<table>
 					<tr>
 						<td>Nome</td>
-						<th><p:inputText value="#{cadastroPacienteBean.paciente.nome}" /></th>
+						<td>
+							<p:inputText id="nome" label="Nome" required="true" value="#{cadastroPacienteBean.paciente.nome}" />
+							<p:message for="nome" />
+						</td>
 					</tr>
 					<tr>
 						<td>CPF</td>
-						<td><p:inputNumber value="#{cadastroPacienteBean.paciente.CPF}"
-							maxValue="99999999999"
-							decimalPlaces="0"
-							leadingZero="keep"
-							decimalSeparator=""
-							thousandSeparator="" />
+						<td>
+							<p:inputNumber id="cpf"
+								label="CPF"
+								value="#{cadastroPacienteBean.paciente.CPF}"
+								required="true"
+								maxValue="99999999999"
+								decimalPlaces="0"
+								leadingZero="keep"
+								decimalSeparator=""
+								thousandSeparator="">
+								<f:validateLength minimum="11" maximum="11" />
+							</p:inputNumber>
+							<p:message for="cpf" />
 						</td>
 					</tr>
 					<tr>
@@ -40,7 +51,7 @@
 						<td><p:inputNumber value="#{cadastroPacienteBean.paciente.peso}" maxValue="999" decimalPlaces="2" /></td>
 					</tr>
 				</table>
-				<p:commandButton action="#{cadastroPacienteBean.create()}" value="Salvar" />
+				<p:commandButton action="#{cadastroPacienteBean.create()}" value="Salvar" validateClient="true" update="form" />
 			</h:form>
 
 		</ui:define>
