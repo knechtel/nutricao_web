@@ -1,15 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:h="http://java.sun.com/jsf/html"
-  xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-
-</h:head>
-
 <h:body>
-<h:form>
-        <!-- IF YOU REMOVE VALUE ATTRIBUTE -->
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+			Olá <h:outputText value="#{usuarioBean.nome}" />
+			     <!-- IF YOU REMOVE VALUE ATTRIBUTE -->
        <p:growl id="messages" showDetail="true" />
         <p:schedule  widgetVar="myschedule" value="#{agendaBean.eventModel}" id="schEvento" >
         
@@ -38,6 +39,7 @@
             <p:commandButton id="addButton" value="Save" actionListener="#{agendaBean.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
         </h:panelGrid>
     </p:dialog>  
-</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>
