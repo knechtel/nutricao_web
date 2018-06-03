@@ -5,20 +5,21 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.inject.Named;
+
 
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.DefaultScheduleModel;
-import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
+@SuppressWarnings("deprecation")
 @ManagedBean
 @ViewScoped
 public class AgendaBean implements Serializable {
@@ -28,12 +29,15 @@ public class AgendaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ScheduleModel model;
 	private ScheduleModel eventModel;
+	
+	private String nome="";
 
 	private ScheduleEvent event = new DefaultScheduleEvent();
 
 	public AgendaBean() {
 		eventModel = new DefaultScheduleModel();
 		eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", new Date(), new Date()));
+		
 	}
 
 	public ScheduleModel getModel() {
@@ -66,11 +70,15 @@ public class AgendaBean implements Serializable {
 		else
 			eventModel.updateEvent(event);
 
-		event = new DefaultScheduleEvent();
+		System.out.println("----------------+++++++++++++");
+		 event = new DefaultScheduleEvent();
+	
 		List<ScheduleEvent> listEventos = eventModel.getEvents();
 
 		for (ScheduleEvent e : listEventos) {
 			System.out.println(">>>>>>>>>>>>>>>>>>>>>");
+			System.out.println(e.getTitle());
+			System.out.println("123456789");
 		}
 
 	}
@@ -100,4 +108,15 @@ public class AgendaBean implements Serializable {
 	private void addMessage(FacesMessage message) {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
 }

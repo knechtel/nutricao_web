@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="/templates/layout.xhtml">
+		<ui:define name="content">
+			Olá <h:outputText value="#{usuarioBean.nome}" />
+			<!-- IF YOU REMOVE VALUE ATTRIBUTE -->
+
+			<h1>Cadastro de Atividade</h1>
+			<table>
+				<tr>
+					<td>Descrição</td>
+					<td><p:inputText value="#{atividadeBean.atividade.descricao}" /></td>
+				</tr>
+
+				<tr>
+					<td>Data atendimento</td>
+					<td><p:calendar
+							value="#{atividadeBean.agendaAtendimento.dataAtendimento}"
+							timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" /></td>
+				</tr>
+				<tr>
+					<td>Inicio da atividade</td>
+					<td><p:calendar
+							value="#{atividadeBean.atividade.dataHoraInicio}"
+							timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" /></td>
+				</tr>
+
+				<tr>
+					<td>Fim da atividade</td>
+					<td><p:calendar value="#{atividadeBean.atividade.dataHoraFim}"
+							timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" /></td>
+				</tr>
+
+				<tr>
+					<td>Paciente:</td>
+					<td><p:selectOneMenu value="#{atividadeBean.pacienteId}"
+							id="paciente">
+							<f:selectItems value="#{atividadeBean.listPaciente}"
+								var="paciente" itemLabel="#{paciente.nome}"
+								itemValue="#{paciente.id}" />
+						</p:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td>Proffisional de Saude:</td>
+					<td><p:selectOneMenu
+							value="#{atividadeBean.prfissionalSaudeid}" id="profissional">
+							<f:selectItems value="#{atividadeBean.listProfissionalSaude}"
+								var="profissional" itemLabel="#{profissional.nome}"
+								itemValue="#{profissional.id}" />
+						</p:selectOneMenu></td>
+				</tr>
+			</table>
+			<p:commandButton value="Enviar" action="#{atividadeBean.doCad()}" />
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

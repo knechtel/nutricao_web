@@ -12,7 +12,7 @@
 			Olá <h:outputText value="#{usuarioBean.nome}" />
 			     <!-- IF YOU REMOVE VALUE ATTRIBUTE -->
        <p:growl id="messages" showDetail="true" />
-        <p:schedule  widgetVar="myschedule" value="#{agendaBean.eventModel}" id="schEvento" >
+        <p:schedule  widgetVar="myschedule" value="#{agendaBean.eventModel}" id="schedule" >
         
         
             <p:ajax event="dateSelect" listener="#{agendaBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
@@ -27,9 +27,10 @@
             <p:inputText id="title" value="#{agendaBean.event.title}" required="true" />
  
             <p:outputLabel for="from" value="From:" />
-            <p:calendar id="from" value="#{agendaBean.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
- 
-            <p:outputLabel for="to" value="To:" />
+					<p:calendar id="from" value="#{agendaBean.event.startDate}"
+						timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm" />
+
+					<p:outputLabel for="to" value="To:" />
             <p:calendar id="to" value="#{agendaBean.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
  
             <p:outputLabel for="allDay" value="All Day:" />
