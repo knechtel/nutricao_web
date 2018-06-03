@@ -15,50 +15,48 @@
 			<h:form id="form">
 				<table>
 					<tr>
-						<td>CPF</td>
+						<th>CPF</th>
 						<td><h:outputText value="#{pacienteBean.paciente.CPF}" /></td>
 					</tr>
 					<tr>
-						<td>Altura</td>
-						<td><h:outputText value="#{pacienteBean.paciente.altura}" /></td>
+						<th>Altura</th>
+						<td><h:outputText value="#{pacienteBean.paciente.altura}" /> cm</td>
 					</tr>
 					<tr>
-						<td>Idade</td>
-						<td><h:outputText value="#{pacienteBean.paciente.idade}" /></td>
+						<th>Idade</th>
+						<td><h:outputText value="#{pacienteBean.paciente.idade}" /> anos</td>
 					</tr>
 					<tr>
-						<td>Peso</td>
-						<td><h:outputText value="#{pacienteBean.paciente.peso}" /></td>
+						<th>Peso</th>
+						<td>
+							<h:outputText value="#{pacienteBean.paciente.peso}">
+								<f:convertNumber type="number" minFractionDigits="2" />
+							</h:outputText> kg
+						</td>
 					</tr>
 				</table>
 				
 				<p:commandButton value="Editar" type="button"
 					onclick="PF('dlg2').show();" />
 		
-				<p:dialog header="Editar " widgetVar="dlg2" modal="true" height="200">
+				<p:dialog header="Editar " widgetVar="dlg2" modal="true" height="150">
 					<table>
 						<tr>
-							<td>Nome</td>
-							<td><p:inputText value="#{pacienteBean.paciente.nome}" /></td>
-						</tr>
-						<tr>
-							<td>CPF</td>
-							<td><p:inputText value="#{pacienteBean.paciente.CPF}" /></td>
-						</tr>
-						<tr>
 							<td>Idade</td>
-							<td><p:inputText value="#{pacienteBean.paciente.idade}" /></td>
+							<td><p:inputNumber value="#{pacienteBean.paciente.idade}" maxValue="999" decimalPlaces="0" /></td>
 						</tr>
 						<tr>
 							<td>Altura</td>
-							<td><p:inputText value="#{pacienteBean.paciente.altura}" /></td>
+							<td><p:inputNumber value="#{pacienteBean.paciente.altura}" maxValue="999" decimalPlaces="0" /></td>
 						</tr>
 						<tr>
 							<td>Peso</td>
-							<td><p:inputText value="#{pacienteBean.paciente.peso}" /></td>
+							<td><p:inputNumber value="#{pacienteBean.paciente.peso}" maxValue="999" decimalPlaces="2" /></td>
 						</tr>
 					</table>
-					<p:commandButton action="#{pacienteBean.update()}" onclick="PF('dlg2').hide();" value="Salvar" />
+					<p>
+						<p:commandButton action="#{pacienteBean.update()}" onclick="PF('dlg2').hide();" value="Salvar" update="form" />
+					</p>
 				</p:dialog>
 				
 				<h3>Exames</h3>

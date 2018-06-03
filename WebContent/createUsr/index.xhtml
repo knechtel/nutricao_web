@@ -16,18 +16,34 @@
 		<h:graphicImage library="images" name="watermelon.png" />
 		<h1>Portal Nutris</h1>
 		<h3>Criar Usuário</h3>
-		<h:form>
-			<p:inputText value="#{createUsuarioBean.usuario.nome}" placeholder="Nome" />
-			<p:inputText value="#{createUsuarioBean.usuario.email}" placeholder="E-mail" />
-			<p:inputNumber value="#{createUsuarioBean.cpf}"
+		<h:form id="form">
+			<p:inputText id="name" value="#{createUsuarioBean.usuario.nome}" placeholder="Nome" required="true" label="Nome" />
+			<p:message for="name" />
+			
+			<p:inputText id="email" value="#{createUsuarioBean.usuario.email}" placeholder="E-mail" label="E-mail" required="true">
+				<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</p:inputText>
+			<p:message for="email" />
+			
+			<p:inputNumber id="cpf" value="#{createUsuarioBean.cpf}"
 							placeholder="CPF"
+							label="CPF"
+							required="true"
 							maxValue="99999999999"
 							decimalPlaces="0"
 							leadingZero="keep"
 							decimalSeparator=""
-							thousandSeparator="" />
-		    <p:password value="#{createUsuarioBean.usuario.password}" placeholder="Senha" />
-			<p:commandButton action="#{createUsuarioBean.createUsuario()}" value="Cadastrar" />
+							thousandSeparator="">
+				<f:validateLength minimum="11" maximum="11" />
+			</p:inputNumber>
+			<p:message for="cpf" />
+		    
+		    <p:password id="password" value="#{createUsuarioBean.usuario.password}" placeholder="Senha" label="Senha" required="true">
+		    	<f:validateLength minimum="6" />
+		    </p:password>
+		    <p:message for="password" />
+		    
+			<p:commandButton action="#{createUsuarioBean.createUsuario()}" value="Cadastrar" validateClient="true" update="form" />
 			<a href="#{request.contextPath}/index.xhtml">Fazer login</a>
 		</h:form>	
 	</div>

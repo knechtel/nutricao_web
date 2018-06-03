@@ -18,7 +18,10 @@
 				<table>
 					<tr>
 						<td>Nome</td>
-						<th><p:inputText value="#{planoAlimentarBean.plano.nome}" /></th>
+						<td>
+							<p:inputText id="nome" label="Nome" required="true" value="#{planoAlimentarBean.plano.nome}" />
+							<p:message for="nome" />
+						</td>
 					</tr>
 					<tr>
 						<td>Descrição</td>
@@ -115,7 +118,7 @@
 					</p:column>
 				</p:dataTable>
 				
-				<p:commandButton action="#{planoAlimentarBean.create()}" value="Finalizar" />
+				<p:commandButton action="#{planoAlimentarBean.create()}" value="Finalizar" validateClient="true" update="form" />
 				
 			</h:form>
 

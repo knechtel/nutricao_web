@@ -17,19 +17,33 @@
 				<table>
 					<tr>
 						<td>Nome</td>
-						<th><p:inputText value="#{createUsuarioAdminBean.usuario.nome}" /></th>
+						<td>
+							<p:inputText id="nome" label="Nome" required="true" value="#{createUsuarioAdminBean.usuario.nome}" />
+							<p:message for="nome" />
+						</td>
 					</tr>
 					<tr>
 						<td>E-mail</td>
-						<td><p:inputText value="#{createUsuarioAdminBean.usuario.email}" /></td>
+						<td>
+							<p:inputText id="email" value="#{createUsuarioAdminBean.usuario.email}" placeholder="E-mail" label="E-mail" required="true">
+								<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+							</p:inputText>
+							<p:message for="email" />
+						</td>
 					</tr>
 					<tr>
 						<td>Senha Inicial</td>
-						<td><p:password value="#{createUsuarioAdminBean.usuario.password}" /></td>
+						<td>
+							<p:password id="password" value="#{createUsuarioAdminBean.usuario.password}" placeholder="Senha" label="Senha" required="true">
+						    	<f:validateLength minimum="6" />
+						    </p:password>
+						    <p:message for="password" />
+						</td>
 					</tr>
 
 				</table>
-				<p:commandButton action="#{createUsuarioAdminBean.create()}" value="Salvar" />
+				
+				<p:commandButton action="#{createUsuarioAdminBean.create()}" value="Salvar" validateClient="true" update="form" />
 
 				<p:dataTable var="usuario" paginator="true"
 					value="#{createUsuarioAdminBean.listUsuario}">

@@ -12,12 +12,14 @@
 		
 		<h1>Profissionais da Saúde</h1>
 		
-		<h:form>
+		<h:form id="form">
 			<table>
 				<tr>
 					<td>Nome</td>
-					<th><p:inputText
-							value="#{profissiobalSaudeBean.profissionalSaude.nome}" /></th>
+					<td>
+						<p:inputText id="nome" label="Nome" required="true" value="#{profissiobalSaudeBean.profissionalSaude.nome}" />
+						<p:message for="nome" />
+					</td>
 				</tr>
 				<tr>
 					<td>CPF</td>
@@ -34,8 +36,7 @@
 							value="#{profissiobalSaudeBean.profissionalSaude.tipo}" /></td>
 				</tr>
 			</table>
-			<p:commandButton action="#{profissiobalSaudeBean.create()}"
-				value="Salvar" />
+			<p:commandButton action="#{profissiobalSaudeBean.create()}" value="Salvar" validateClient="true" update="form" />
 				
 			<p:dataTable var="profissional" paginator="true"
 				value="#{profissiobalSaudeBean.listProfissionalSaude}">
