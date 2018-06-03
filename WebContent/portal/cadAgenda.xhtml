@@ -10,8 +10,34 @@
 <h:body>
 <h:form>
         <!-- IF YOU REMOVE VALUE ATTRIBUTE -->
-      
-        <p:schedule widgetVar="meuCalendario" value="#{testBean.eventModel}" id="schEvento" ></p:schedule>
+       <p:growl id="messages" showDetail="true" />
+        <p:schedule  widgetVar="myschedule" value="#{agendaBean.eventModel}" id="schEvento" >
+        
+        
+            <p:ajax event="dateSelect" listener="#{agendaBean.onDateSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+            <p:ajax event="eventSelect" listener="#{agendaBean.onEventSelect}" update="eventDetails" oncomplete="PF('eventDialog').show();" />
+            <p:ajax event="eventMove" listener="#{agendaBean.onEventMove}" update="messages" />
+            <p:ajax event="eventResize" listener="#{agendaBean.onEventResize}" update="messages" />
+ 
+        </p:schedule>
+           <p:dialog widgetVar="eventDialog" header="Event Details" showEffect="clip" hideEffect="clip">
+        <h:panelGrid id="eventDetails" columns="2">
+            <p:outputLabel for="title" value="Titles:" />
+            <p:inputText id="title" value="#{agendaBean.event.title}" required="true" />
+ 
+            <p:outputLabel for="from" value="From:" />
+            <p:calendar id="from" value="#{agendaBean.event.startDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+ 
+            <p:outputLabel for="to" value="To:" />
+            <p:calendar id="to" value="#{agendaBean.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
+ 
+            <p:outputLabel for="allDay" value="All Day:" />
+            <h:selectBooleanCheckbox id="allDay" value="#{testBean.event.allDay}" />
+ 
+            <p:commandButton type="reset" value="Reset" />
+            <p:commandButton id="addButton" value="Save" actionListener="#{agendaBean.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
+        </h:panelGrid>
+    </p:dialog>  
 </h:form>
 </h:body>
 </html>
