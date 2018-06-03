@@ -32,7 +32,7 @@
             <p:calendar id="to" value="#{agendaBean.event.endDate}" timeZone="GMT+2" pattern="dd/MM/yyyy HH:mm"/>
  
             <p:outputLabel for="allDay" value="All Day:" />
-            <h:selectBooleanCheckbox id="allDay" value="#{testBean.event.allDay}" />
+            <h:selectBooleanCheckbox id="allDay" value="#{agendaBean.event.allDay}" />
  
             <p:commandButton type="reset" value="Reset" />
             <p:commandButton id="addButton" value="Save" actionListener="#{agendaBean.addEvent}" oncomplete="PF('myschedule').update();PF('eventDialog').hide();" />
