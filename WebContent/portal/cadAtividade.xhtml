@@ -58,7 +58,21 @@
 				</tr>
 			</table>
 			<p:commandButton value="Enviar" action="#{atividadeBean.doCad()}" />
-
+			<h:form>
+				<p:dataTable var="atividade" paginator="true" rows="20"
+					value="#{atividadeBean.listAtividade}">
+					<p:column headerText="Nome">
+						<h:outputText value="#{atividade.id}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Ver Perfil" action="#{atividade.descricao}" />
+					</p:column>
+					<p:column headerText="">
+						<h:commandLink value="Remover"
+							action="#{pacienteBean.deleteAction(paciente)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
