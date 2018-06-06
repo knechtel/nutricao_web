@@ -3,6 +3,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -19,6 +21,9 @@ import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
+import br.com.nutricao.JpaController.AtividadeJpaControllerRemote;
+import br.com.nutricao.bean.Atividade;
+
 @SuppressWarnings("deprecation")
 @ManagedBean
 @ViewScoped
@@ -29,14 +34,29 @@ public class AgendaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ScheduleModel model;
 	private ScheduleModel eventModel;
-	
-	private String nome="";
+
+	private List<Atividade>	listAtividade;		
+
 
 	private ScheduleEvent event = new DefaultScheduleEvent();
+	@EJB
+	private AtividadeJpaControllerRemote atividadeJpa;
 
-	public AgendaBean() {
+	@PostConstruct
+	public void init() {
+		listAtividade = atividadeJpa.findAll();
 		eventModel = new DefaultScheduleModel();
-		eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", new Date(), new Date()));
+		//eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", new Date(), new Date()));
+		
+		for(Atividade a:listAtividade) {
+			eventModel.addEvent(new DefaultScheduleEvent(a.getDescricao(), a.getDataHoraInicio(), a.getDataHoraFim()));
+					
+		}
+		
+	}
+	
+	public AgendaBean() {
+		
 		
 	}
 
@@ -109,12 +129,14 @@ public class AgendaBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 
-	public String getNome() {
-		return nome;
+
+
+	public List<Atividade> getListAtividade() {
+		return listAtividade;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setListAtividade(List<Atividade> listAtividade) {
+		this.listAtividade = listAtividade;
 	}
 
 
