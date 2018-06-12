@@ -1,5 +1,6 @@
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-
+import javax.inject.Inject;
 
 import org.primefaces.event.ScheduleEntryMoveEvent;
 import org.primefaces.event.ScheduleEntryResizeEvent;
@@ -21,12 +22,16 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import br.com.nutricao.JpaController.AtividadeJpaControllerRemote;
+import br.com.nutricao.JpaController.PacienteJpaController;
+import br.com.nutricao.JpaController.PacienteJpaControllerRemote;
 import br.com.nutricao.bean.Atividade;
+import br.com.nutricao.bean.Paciente;
+import br.com.nutricao.controller.UsuarioBean;
 
 @SuppressWarnings("deprecation")
 @ManagedBean
 @ViewScoped
-public class AgendaBean implements Serializable {
+public class AgendaBeanUser implements Serializable {
 	/**
 	 * 
 	 */
@@ -37,14 +42,35 @@ public class AgendaBean implements Serializable {
 
 	private List<Atividade>	listAtividade;		
 
+	@Inject
+	private UsuarioBean usuario;
 
 	private ScheduleEvent event = new DefaultScheduleEvent();
 	@EJB
 	private AtividadeJpaControllerRemote atividadeJpa;
+	
+	private PacienteJpaControllerRemote pacienteJpaRemote;
 
 	@PostConstruct
 	public void init() {
-		listAtividade = atividadeJpa.findAll();
+		System.out.println("inicio +++++++++++++++++++++");
+		//listAtividade = pacienteJpaRemote.findAtividade(usuario.getUsuario().getPaciente()).getListAtividade();
+		
+		System.out.println("teste->. "+usuario.getNome());
+	
+		
+		Integer id  = usuario.getIdPaciente();
+		System.out.println("testando - >> id [ "+id+" ]");
+		Paciente pacienteLocal = pacienteJpaRemote.findAtividade(id);
+		if(pacienteLocal==null) {
+			System.out.println("++++++++++++ paciente nullo");
+		}
+		else {
+		listAtividade = pacienteJpaRemote.findAtividade(usuario.getIdPaciente()).getListAtividade();
+		}
+		if(listAtividade==null) {
+			listAtividade = new ArrayList<Atividade>();
+		}
 		eventModel = new DefaultScheduleModel();
 		//eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", new Date(), new Date()));
 		
@@ -56,7 +82,7 @@ public class AgendaBean implements Serializable {
 		
 	}
 	
-	public AgendaBean() {
+	public AgendaBeanUser() {
 		
 		
 	}
