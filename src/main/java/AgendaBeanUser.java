@@ -48,7 +48,7 @@ public class AgendaBeanUser implements Serializable {
 	private ScheduleEvent event = new DefaultScheduleEvent();
 	@EJB
 	private AtividadeJpaControllerRemote atividadeJpa;
-	
+	@EJB
 	private PacienteJpaControllerRemote pacienteJpaRemote;
 
 	@PostConstruct
@@ -61,13 +61,10 @@ public class AgendaBeanUser implements Serializable {
 		
 		Integer id  = usuario.getIdPaciente();
 		System.out.println("testando - >> id [ "+id+" ]");
-		Paciente pacienteLocal = pacienteJpaRemote.findAtividade(id);
-		if(pacienteLocal==null) {
-			System.out.println("++++++++++++ paciente nullo");
-		}
-		else {
-		listAtividade = pacienteJpaRemote.findAtividade(usuario.getIdPaciente()).getListAtividade();
-		}
+	
+
+		listAtividade = atividadeJpa.findAtividade(id);
+
 		if(listAtividade==null) {
 			listAtividade = new ArrayList<Atividade>();
 		}
